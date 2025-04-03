@@ -95,4 +95,5 @@ function Q15() {
     console.log(filterEvents([5, 4, 3, 2, 1]))
 
     console.log(filterEvents([1, 2, 3, 4, 5]))
+    console.log(filterEvents([6, 7, 8, 9, 10]))
 }
