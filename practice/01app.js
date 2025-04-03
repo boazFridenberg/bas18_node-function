@@ -58,3 +58,12 @@ const count2 = (a) => a * (a + 1) / 2
 const count3 = function(a){
     return a * (a + 1) / 2
 }
+
+function compute(callback){
+    let sol = callback(8, 7)
+    console.log(sol)
+}
+
+compute(count1)
+compute((a, b)=> a + b)
+
