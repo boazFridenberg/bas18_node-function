@@ -15,3 +15,6 @@ function generate7BoomAfterDelayAsync(min, max){
 generate7BoomAfterDelayAsync(10, 100)
     .then((data) => { console.log(data) })
     .catch((err) => { console.log(err) });
+
+
+
