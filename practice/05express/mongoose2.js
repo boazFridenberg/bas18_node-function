@@ -9,20 +9,45 @@ app.use(express.json())
 
 const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
 
-app.post('/api/v1/products', function(req, res, next) {
-      let p1= req.body;
-      console.log(req.body)
-      let newItem = new CurrentProduct(p1);
-      newItem.save().then(item=>{
-      res.json({item:item})
-  }).catch(err=>{
-      console.log("error 😱:" +err)
-  });
-});
+app.post('/api/v1/products', function (req, res, next) {
+    try {
+        let p1 = req.body;
+        console.log(req.body)
+        let newItem = new CurrentProduct(p1);
+        newItem.save().then(item => {
+            res.json({ item: item })
+        })
+    }
+    catch (err) {
+        console.log("error 😱:" + err)
+    };
+})
+    
+app.get("/api/v1/products", async (req, res) => {
+    try {
+        let items = await CurrentProduct.find()
+        res.json(items)
+    }
+    catch (err) {
+        console.log("error 😱:" + err)
+    }
+    
+})
 
-mongoose.connect(uri, clientOptions);
+app.delete("/api/v1/products", async (req, res) => {
+    try {
+        let items = await CurrentProduct.deleteOne()
+        res.json(items)
+    }
+    catch (err) {
+        console.log("error 😱:" + err)
+    }
+    
+})
+
+    mongoose.connect(uri, clientOptions);
   
-app.listen(port)
+    app.listen(port)
 
 
 
